@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Savings DApp</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .box {
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 18px;
+            word-break: break-all;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            margin-bottom: 14px;
+            font-size: 15px;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .dark {
+            background: #111827;
+            color: white;
+        }
+
+        .light {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .status {
+            margin-top: 14px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Personal Savings DApp</h1>
+        <p class="subtitle">Deposit, withdraw, and check your ETH balance on Sepolia.</p>
+
+        <button class="primary" onclick="connectWallet()">Connect Wallet</button>
+
+        <p class="status">Connect MetaMask first before interacting with the contract.</p>
+
+        <label class="label">Connected Wallet</label>
+        <div id="account" class="box">Not connected</div>
+
+        <label class="label">Amount (ETH)</label>
+        <input type="text" id="amount" placeholder="Enter amount, e.g. 0.01">
+
+        <div class="row">
+            <button class="dark" onclick="depositETH()">Deposit</button>
+            <button class="dark" onclick="withdrawETH()">Withdraw</button>
+            <button class="light" onclick="getBalance()">Check Balance</button>
+        </div>
+
+        <label class="label" style="margin-top: 20px;">My Balance</label>
+        <div id="balanceResult" class="box">0 ETH</div>
+
+        <p id="message" class="status">Ready</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
